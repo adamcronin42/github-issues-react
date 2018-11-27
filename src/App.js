@@ -4,6 +4,7 @@ import './App.css';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import Table from './components/table';
+import Header from './components/header';
 
 export const GET_GITHUB_ISSUES = gql`
   query { 
@@ -55,6 +56,7 @@ class App extends Component {
             
             return(
               <div>
+                <Header header={data.repository.issues.totalCount} />
                 <div>
                   {data.repository.issues.nodes.map(node => <Table title={node.title} />)}
                 </div>
