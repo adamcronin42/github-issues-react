@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import Table from './components/table';
 
 export const GET_GITHUB_ISSUES = gql`
   query { 
@@ -10,7 +11,7 @@ export const GET_GITHUB_ISSUES = gql`
       closedIssueCount: issues(states:CLOSED) {
         totalCount
       }
-      issues(states:OPEN last:3 before:"Y3Vyc29yOnYyOpHOFt9ufw==") {
+      issues(states:OPEN last:25 before:"Y3Vyc29yOnYyOpHOFt9ufw==") {
         nodes {
           author {
             login
@@ -50,11 +51,14 @@ class App extends Component {
         <Query query={GET_GITHUB_ISSUES}>
           {({ data, loading, error }) => {
             if(loading) return <h1>LOADING!</h1>;
-            if(error) console.log(error);
             if (error) return <p>ERROR: {error.message}</p>;
-            console.log(JSON.stringify(data));
+            
             return(
-              <h1>{data.repository.issues.totalCount}</h1>
+              <div>
+                <div>
+                  {data.repository.issues.nodes.map(node => <Table title={node.title} />)}
+                </div>
+              </div>
             );
           }}
         </Query>
@@ -80,3 +84,4 @@ class App extends Component {
 }
 
 export default App;
+
