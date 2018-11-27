@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Header = props => {
+const TableHeader = props => {
   return(<StyledHeader>{props.header} Open</StyledHeader>)
 };
 
@@ -12,4 +12,4 @@ const StyledHeader = styled.div`
   margin: 5px;
 `;
 
-export default Header;
+export default TableHeader;

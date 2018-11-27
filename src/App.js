@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import Table from './components/table';
-import Header from './components/header';
+import TableRow from './components/table-row';
+import TableHeader from './components/table-header';
 
 export const GET_GITHUB_ISSUES = gql`
   query { 
@@ -56,9 +56,9 @@ class App extends Component {
             
             return(
               <div>
-                <Header header={data.repository.issues.totalCount} />
+                <TableHeader header={data.repository.issues.totalCount} />
                 <div>
-                  {data.repository.issues.nodes.map(node => <Table title={node.title} />)}
+                  {data.repository.issues.nodes.map(node => <TableRow text={node.title} />)}
                 </div>
               </div>
             );
