@@ -1,10 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-export default class TableRow extends Component {
-  render() {
-    return(<Row className={this.props.className}>{this.props.children}</Row>)
-  }
+const TableRow = props =>  {
+    return(<Row className={props.className}>{props.children}</Row>)
 }
 
 const Row = styled.div`
@@ -13,3 +11,5 @@ const Row = styled.div`
   font-size: 14px;
   line-height: 1.5;
 `
+
+export default TableRow;
