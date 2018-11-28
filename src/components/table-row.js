@@ -10,6 +10,9 @@ const Row = styled.div`
   padding: 5px;
   font-size: 14px;
   line-height: 1.5;
+  &:hover {
+    background-color: #f6f8fa;
+  }
 `
 
 export default TableRow;
