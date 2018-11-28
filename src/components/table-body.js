@@ -4,7 +4,7 @@ import TableRow from './table-row';
 
 const TableBody = props => {
   return (
-    <div>
+    <div className={props.className}>
       {props.children}
     </div>
   );

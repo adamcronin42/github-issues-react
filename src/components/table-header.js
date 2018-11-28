@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TableHeader = props => {
-  return(<StyledHeader>{props.header} Open</StyledHeader>)
+  return(<StyledHeader className={props.className}>{props.header} Open</StyledHeader>)
 };
 
 const StyledHeader = styled.div`

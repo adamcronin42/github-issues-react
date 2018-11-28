@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Table = props => {
   return(
-    <StyledTable>
+    <StyledTable className={props.className}>
       {props.children}
     </StyledTable>
   );
