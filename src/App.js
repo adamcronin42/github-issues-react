@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Query } from 'react-apollo';
@@ -6,6 +6,7 @@ import gql from 'graphql-tag';
 import TableHeader from './components/table-header';
 import TableBody from './components/table-body';
 import TableRow from './components/table-row';
+import RowItem from './components/row-item';
 import Table from './components/table';
 
 export const GET_GITHUB_ISSUES = gql`
@@ -50,47 +51,29 @@ export const GET_USER = gql`
 class App extends Component {
   render() {
     return (
-      <Fragment>
-        <Query query={GET_GITHUB_ISSUES}>
-          {({ data, loading, error }) => {
-            if(loading) return <h1>LOADING!</h1>;
-            if (error) return <p>ERROR: {error.message}</p>;
-            let totalCount = data.repository.issues.totalCount;
-            let issues = data.repository.issues.nodes.reverse();
-            return(
-              <Table>
-                <TableHeader header={totalCount} />
-                <TableBody>
+      <Query query={GET_GITHUB_ISSUES}>
+        {({ data, loading, error }) => {
+          if(loading) return <h1>LOADING!</h1>;
+          if (error) return <p>ERROR: {error.message}</p>;
+          let totalCount = data.repository.issues.totalCount;
+          let issues = data.repository.issues.nodes.reverse();
+          return(
+            <Table>
+              <TableHeader header={totalCount} />
+              <TableBody>
                 {issues.map(node => {
                   return (
                     <TableRow>
-                      <div>{node.title}</div>
-                      <div>#{node.number}</div>
+                      <RowItem>{node.title}</RowItem>
+                      <RowItem>#{node.number}</RowItem>
                     </TableRow>
                   )})
                 }
-                </TableBody>
-              </Table>
-            );
-          }}
-        </Query>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>
-        </div>
-      </Fragment>
+              </TableBody>
+            </Table>
+          );
+        }}
+      </Query>
     );
   }
 }
