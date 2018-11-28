@@ -9,7 +9,6 @@ const StyledHeader = styled.div`
   color: red;
   border-style: solid;
   padding: 5px;
-  margin: 5px;
 `;
 
 export default TableHeader;

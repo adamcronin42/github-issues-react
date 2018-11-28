@@ -10,5 +10,4 @@ export default class TableRow extends Component {
 const Row = styled.div`
   border-style: solid;
   padding: 5px;
-  margin: 5px;
 `
