@@ -4,17 +4,14 @@ import TableRow from './table-row';
 
 const TableBody = props => {
   return (
-    <StyledTableBody>
-      {props.data.map(node => <TableRow text={`#${node.number} ${node.title}`} />)}
-    </StyledTableBody>
+    <div>
+      {props.data.map(node => <StyledTableRow text={`#${node.number} ${node.title}`} />)}
+    </div>
   );
 };
 
-//TODO: fix the styling so the divs look like a table
-
-const StyledTableBody = styled('TableBody')`
-  color: green;
-
+const StyledTableRow = styled(TableRow)`
+  border-style: hidden solid solid solid;
 `;
 
 export default TableBody;
