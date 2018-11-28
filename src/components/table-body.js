@@ -5,7 +5,7 @@ import TableRow from './table-row';
 const TableBody = props => {
   return (
     <StyledTableBody>
-      {props.data.map(node => <TableRow text={node.title} />)}
+      {props.data.map(node => <TableRow text={`#${node.number} ${node.title}`} />)}
     </StyledTableBody>
   );
 };

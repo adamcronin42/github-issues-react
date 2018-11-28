@@ -13,7 +13,7 @@ export const GET_GITHUB_ISSUES = gql`
       closedIssueCount: issues(states:CLOSED) {
         totalCount
       }
-      issues(states:OPEN last:25 before:"Y3Vyc29yOnYyOpHOFt9ufw==") {
+      issues(states:OPEN last:25) {
         nodes {
           author {
             login
@@ -54,11 +54,12 @@ class App extends Component {
           {({ data, loading, error }) => {
             if(loading) return <h1>LOADING!</h1>;
             if (error) return <p>ERROR: {error.message}</p>;
-            
+            let totalCount = data.repository.issues.totalCount;
+            let issues = data.repository.issues.nodes.reverse();
             return(
               <Table>
-                <TableHeader header={data.repository.issues.totalCount} />
-                <TableBody data={data.repository.issues.nodes} />
+                <TableHeader header={totalCount} />
+                <TableBody data={issues} />
               </Table>
             );
           }}
