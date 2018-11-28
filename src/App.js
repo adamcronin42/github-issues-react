@@ -5,6 +5,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import TableHeader from './components/table-header';
 import TableBody from './components/table-body';
+import TableRow from './components/table-row';
 import Table from './components/table';
 
 export const GET_GITHUB_ISSUES = gql`
@@ -59,7 +60,16 @@ class App extends Component {
             return(
               <Table>
                 <TableHeader header={totalCount} />
-                <TableBody data={issues} />
+                <TableBody>
+                {issues.map(node => {
+                  return (
+                    <TableRow>
+                      <div>{node.title}</div>
+                      <div>#{node.number}</div>
+                    </TableRow>
+                  )})
+                }
+                </TableBody>
               </Table>
             );
           }}
