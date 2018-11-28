@@ -6,8 +6,8 @@ const TableHeader = props => {
 };
 
 const StyledHeader = styled.div`
-  color: red;
-  border-style: solid;
+  background-color: #f6f8fa;
+  border: 1px solid #e1e4e8;
   padding: 5px;
 `;
 
