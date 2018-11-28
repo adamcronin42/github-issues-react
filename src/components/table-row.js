@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export default class TableRow extends Component {
   render() {
-    return(<Row>{this.props.text}</Row>)
+    return(<Row className={this.props.className}>{this.props.text}</Row>)
   }
 }
 
