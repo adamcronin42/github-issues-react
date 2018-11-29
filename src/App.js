@@ -9,6 +9,7 @@ import TableRow from './components/table-row';
 import RowItem from './components/row-item';
 import SecondaryRowItem from './components/secondary-row-item';
 import Table from './components/table';
+var util = require('./util/helper-functions');
 
 export const GET_GITHUB_ISSUES = gql`
   query { 
@@ -66,7 +67,7 @@ class App extends Component {
                   return (
                     <TableRow>
                       <RowItem>{node.title}</RowItem>
-                      <SecondaryRowItem>#{node.number} by {node.author.login}</SecondaryRowItem>
+                      <SecondaryRowItem>#{node.number} {util.getElapsedTime(new Date(node.createdAt))} by {node.author.login}</SecondaryRowItem>
                     </TableRow>
                   )})
                 }
