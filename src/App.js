@@ -7,6 +7,7 @@ import TableHeader from './components/table-header';
 import TableBody from './components/table-body';
 import TableRow from './components/table-row';
 import RowItem from './components/row-item';
+import SecondaryRowItem from './components/secondary-row-item';
 import Table from './components/table';
 
 export const GET_GITHUB_ISSUES = gql`
@@ -65,7 +66,7 @@ class App extends Component {
                   return (
                     <TableRow>
                       <RowItem>{node.title}</RowItem>
-                      <RowItem>#{node.number}</RowItem>
+                      <SecondaryRowItem>#{node.number} by {node.author.login}</SecondaryRowItem>
                     </TableRow>
                   )})
                 }
