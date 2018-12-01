@@ -9,6 +9,7 @@ import TableRow from './components/table-row';
 import RowItem from './components/row-item';
 import SecondaryRowItem from './components/secondary-row-item';
 import Table from './components/table';
+import Loading from './components/loading';
 var util = require('./util/helper-functions');
 
 export const GET_GITHUB_ISSUES = gql`
@@ -55,7 +56,7 @@ class App extends Component {
     return (
       <Query query={GET_GITHUB_ISSUES}>
         {({ data, loading, error }) => {
-          if(loading) return <h1>LOADING!</h1>;
+          if(loading) return <span className="vertical-center"><Loading /></span>;
           if (error) return <p>ERROR: {error.message}</p>;
           let totalCount = data.repository.issues.totalCount;
           let issues = data.repository.issues.nodes.reverse();
