@@ -66,7 +66,7 @@ class App extends Component {
               <TableBody>
                 {issues.map(node => {
                   return (
-                    <TableRow>
+                    <TableRow key={node.number}>
                       <RowItem>{node.title}</RowItem>
                       <SecondaryRowItem>#{node.number} {util.getElapsedTime(new Date(node.createdAt))} by {node.author.login}</SecondaryRowItem>
                     </TableRow>
