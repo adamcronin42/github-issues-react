@@ -25,6 +25,7 @@ const getElapsedTime = (startDate, endDate) => {
   } else {
     return "a minute ago";
   }
+  return elapsedTime;
 };
 
 module.exports = {

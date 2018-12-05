@@ -58,11 +58,12 @@ class App extends Component {
         {({ data, loading, error }) => {
           if(loading) return <span className="vertical-center"><Loading /></span>;
           if (error) return <p>ERROR: {error.message}</p>;
-          let totalCount = data.repository.issues.totalCount;
+          let openCount = data.repository.issues.totalCount;
+          let closedCount = data.repository.closedIssueCount.totalCount;
           let issues = data.repository.issues.nodes.reverse();
           return(
             <Table>
-              <TableHeader header={totalCount} />
+              <TableHeader openCount={openCount} closedCount={closedCount} />
               <TableBody>
                 {issues.map(node => {
                   return (
